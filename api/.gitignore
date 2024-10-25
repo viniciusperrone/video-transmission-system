@@ -1,0 +1,82 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.sql
+*.pkl
+*.env
+
+# Local development environment settings
+.env
+.env.local
+.venv/
+venv/
+env/
+ENV/
+
+# Django migrations
+**/migrations/
+!**/migrations/__init__.py
+
+# Media / static files
+media/
+staticfiles/
+static/
+*.svg
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+# Node.js dependencies (if using npm/yarn)
+node_modules/
+
+# Coverage reports
+htmlcov/
+.tox/
+.coverage
+*.cover
+*.py,cover
+
+# Testing results
+*.pytest_cache/
+junitxml/
+test-results/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# Celery task queue
+celerybeat-schedule
+celerybeat.pid
+
+# SQLAlchemy
+*.sqlite
+
+# PyCharm files
+.idea/
+
+# VS Code files
+.vscode/
+
+# Other IDEs and editors
+*.swp
+*.swo
+*~
