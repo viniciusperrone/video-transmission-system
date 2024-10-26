@@ -1,5 +1,4 @@
 {% extends "admin/base_site.html" %} {% block content %}
-
 <form id="upload-form" action="post" enctype="multipart/form-data">
     <p id="errornote" class="errornote hidden"></p>
     {% csrf_token %}
@@ -25,4 +24,12 @@
     </div>
 </form>
 
+<div id="progress-bar" style="width: 100%; background: #f3f3f3">
+    <div
+        id="progress"
+        style="width: 0%; height: 20px; background: #4caf50; text-align: center"
+    >
+        0%
+    </div>
+</div>
 {% endblock %}
