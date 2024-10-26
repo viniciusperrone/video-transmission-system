@@ -17,7 +17,7 @@ def random_filename(instance, filename):
 
 # Create your models here.
 class Video(models.Model):
-    title = models.CharField(max_length=100, unique=True, verbose_name='Título')
+    title = models.CharField(max_length=100, unique=True,verbose_name='Título')
     description = models.TextField(verbose_name='Descrição')
     thumbnail = models.ImageField(upload_to=random_filename, verbose_name='Thumbnail')
     slug = models.SlugField(unique=True)
@@ -26,7 +26,7 @@ class Video(models.Model):
     num_likes = models.IntegerField(default=0, verbose_name='Likes', editable=False)
     num_views = models.IntegerField(default=0, verbose_name='Visualizações', editable=False)
     tags = models.ManyToManyField('Tag', verbose_name='Tags', related_name='videos')
-    author = models.ForeignKey('auth.User', on_delete=models.PROTECT, verbose_name='Autor', related_name='videos', editable=False)
+    author = models.ForeignKey('auth.User', on_delete=models.PROTECT,verbose_name='Autor', related_name='videos', editable=False)
 
     def save(
         self,
@@ -35,6 +35,9 @@ class Video(models.Model):
         using=None,
         update_fields=None,
     ):
+        if not self.author_id and hasattr(self, '_author'):
+            self.author = self._author
+
         if self.is_published and not self.published_at:
             self.published_at = timezone.now()
         return super().save(force_insert, force_update, using, update_fields)

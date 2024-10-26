@@ -7,7 +7,13 @@ from .models import Video, Tag
 
 class VideoAdmin(admin.ModelAdmin):
     list_display = ('title', 'published_at', 'is_published', 'num_likes', 'num_views', 'redirect_to_upload',)
+    exclude = ('author',)
 
+    def save_model(self, request, obj, form, change):
+        if not obj.author_id:
+            obj.author = request.user
+        super().save_model(request, obj, form, change)
+        
     def get_urls(self):
         urls = super().get_urls()
         custom_urls = [
