@@ -13,7 +13,7 @@ class VideoAdmin(admin.ModelAdmin):
         if not obj.author_id:
             obj.author = request.user
         super().save_model(request, obj, form, change)
-        
+
     def get_urls(self):
         urls = super().get_urls()
         custom_urls = [
@@ -26,7 +26,7 @@ class VideoAdmin(admin.ModelAdmin):
         return render(request, 'admin/core/upload_video.html')
     
     def redirect_to_upload(self, obj: Video):
-        url = reverse('admin:core_app_video_upload', args=[obj.id])
+        url = reverse('admin:core_video_upload', args=[obj.id])
 
         return format_html(f'<a href="{url}">Upload</a>')
     
