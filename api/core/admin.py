@@ -17,7 +17,7 @@ class VideoAdmin(admin.ModelAdmin):
     def get_urls(self):
         urls = super().get_urls()
         custom_urls = [
-            path('<int:id>/upload-video', self.upload_video, name='core_video_upload')
+            path('<int:id>/upload-video', self.upload_video, name='core_video_upload'),
         ]
 
         return custom_urls + urls
