@@ -6,7 +6,7 @@ from django.urls import path, reverse
 from django.utils.html import format_html
 
 from core.form import VideoChunkUploadForm
-from core.services import VideoService
+from core.services import VideoService, create_video_service_factory
 
 from .models import Video, Tag
 
@@ -36,7 +36,9 @@ class VideoAdmin(admin.ModelAdmin):
             if not form.is_valid():
                 return JsonResponse({ 'error': form.errors }, status=400)
             
-            VideoService().process_upload(
+            video_service = create_video_service_factory()
+
+            video_service.process_upload(
                 video_id=id,
                 chunk_index=form.cleaned_data['chunkIndex'],
                 chunk=form.cleaned_data['chunk'].read()
